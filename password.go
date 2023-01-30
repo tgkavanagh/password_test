@@ -179,7 +179,7 @@ func passwordContainsVowelTest(password string) bool {
  ******************************************************************************/
 func passwordContainsConsecutiveCharacterTest(password string, count uint8) bool {
 	return ConsecutiveVowelCharactersRegexPtr.MatchString(password) ||
-				 ConsecutiveConsonantCharactersRegexPtr.MatchString(password)
+		ConsecutiveConsonantCharactersRegexPtr.MatchString(password)
 }
 
 /*******************************************************************************
@@ -254,10 +254,9 @@ func validatePasswordFull(outfp *os.File, password string) bool {
 
 	pwAcceptable = pwlt && pwact && pwcvt && !pwdlt && !pwccct
 
-	rStr:= ""
+	rStr := ""
 	rStr = fmt.Sprintf("Password (%s) pwlt (%v) pwact (%v) pwcvt (%v) pwdlt (%v) pwcct (%v)\n\n\n",
 		password, pwlt, pwact, pwcvt, pwdlt, pwccct)
-
 
 	_, err := outfp.WriteString(rStr)
 	if err != nil {
@@ -320,7 +319,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-  // Create a scanner to read in the passwords from the input file.
+	// Create a scanner to read in the passwords from the input file.
 	fscanner := bufio.NewScanner(ifp)
 	fscanner.Split(bufio.ScanLines)
 
@@ -349,11 +348,11 @@ func main() {
 	fmt.Printf("Execution time: %s\n", elapsed)
 
 	// Log if we did not find the end of input keyword
-  if endOfInputFound == false {
+	if endOfInputFound == false {
 		fmt.Printf("End of input keyword (%s) not found before EOF\n", EndOfInputDelimiter)
 	}
 
 	// Close all open files
-  ifp.Close()
+	ifp.Close()
 	ofp.Close()
 }
